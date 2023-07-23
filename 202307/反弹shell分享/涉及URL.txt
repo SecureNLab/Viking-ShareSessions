@@ -1,0 +1,4 @@
+名称介绍：https://www.cnblogs.com/sunny11/p/13583083.html
+文件下载：https://forum.ywhack.com/bountytips.php?download
+反弹Shell：https://forum.ywhack.com/reverse-shell/
+命令学习：https://blog.csdn.net/weixin_43303273/article/details/83029138
