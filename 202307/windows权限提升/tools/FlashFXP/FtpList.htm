@@ -1,0 +1,176 @@
+<html>
+
+<head>
+<title>FtpList</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+</head>
+
+<body>
+
+<p>FtpList: An application to list all files and directories in a FTP server or                              
+a local computer. The result can be a tree or a URL list.</p> 
+
+<p>作者：马健<br>
+邮箱：<a href="mailto:stronghorse@163.net">stronghorse@163.net<br>
+</a>主页：<a href="http://stronghorse.yeah.net">http://stronghorse.yeah.net</a></p>
+
+<p><a href="#FAQ">FAQ</a><br>
+<a href="#使用说明">使用说明<br>
+</a>    
+<a href="#附录A 鸣谢">附录A 鸣谢</a><br>                                                                        
+<a href="#附录B 版本更新记录">附录B 版本更新记录</a></p>                                                                       
+
+<h2><font color="#FF0000"><a name="FAQ">FAQ</a></font></h2>
+
+<p>Q：FtpList是什么？<br>
+A：这是一个目录列表工具，能够列出FTP、本地磁盘上的目录内容，输出格式可以是树型图，也可以是URL、HTML、带格式文本文件等形式。</p>              
+
+<p>Q：FtpList有什么用？<br>
+A：对于喜欢下载的人来说，如果某些FTP比较难连，可以用FtpList整理出这些FTP服务器的URL列表，然后把URL粘贴到FlashGet等下载工具中，这样就可以用比普通FTP工具更可靠、更执着的专业下载工具，一天24小时不停地进行重试，直到下载到为止。<br>
+对于FTP站点管理员或普通用户来说，可以用FtpList生成本地目录的树型图，便于管理、宣传。</p>                      
+
+<p>Q：FtpList有什么特点？<br>
+A：FtpList具有以下特点：</p>                      
+
+<ol>
+  <li>采用底层FTP协议，发送一次LIST -R命令即可获得指定目录及其下所有子目录（包括隐含子目录）的全部信息，中间的所有目录切换工作由FTP服务器本身完成，大大减少了传输交互过程。</li>            
+  <li>如果FTP服务器软件不支持LIST -R命令，也可以由FtpList自己逐级周游服务器目录。这种方式与前一种方式相比，对服务器资源占用略小，但是通讯过程大大麻烦，速度也比前一种慢。</li>            
+  <li>可选是否采用PASV模式。</li>
+  <li>支持站点记忆，即如果需要经常访问某些站点，可以把站点的host/port、username/password存储起来，以后用的时候调入即可，省去输入的烦恼。</li>
+  <li>可以列本地磁盘中的内容。</li>
+  <li>输出格式可选，可以直接输出URL列表，也可以输出树型图，输出树型图时还可以选择是否输出文件长度等信息。</li>
+</ol>
+
+<p>Q：FtpList有哪些限制？<br>
+A：FtpList不是万能的，存在以下限制：</p>                      
+
+<ol>
+  <li>FtpList没有自动重连的功能。如果站点较大、内容较多，列表需要的时间可能会很长，这会增加链接丢失的机会。因此在这种情况下，建议一次只列出FTP上的一个主目录，多列几次还是可以得到整个站点的信息的。</li>
+  <li>为了加快显示树型图、URL列表的速度，显示前会在系统临时目录下生成临时文件，显示完成后自动删除。因此请保证系统盘有足够的剩余空间。</li>
+</ol>
+
+<p>Q：为什么有些FTP的文件列不出来，或者只能列第一级目录？有什么解决方法？<br>
+A：可能的原因有两个：</p>                            
+
+<ol>
+  <li>最常见原因是FTP服务器不支持PASV方式，解决的办法很简单：清除PASV选项即可。</li>
+  <li>也有可能是FTP服务器不支持LIST             
+-R命令，把“Use LIST -R command”选项清掉就可以了。</li>      
+</ol>
+
+<p>Q：为什么在有些机器上中文文件名、目录会显示成乱码？<br>
+A：在某些版本的Windows 9x下，由于DLL的问题，在FtpList的显示窗口中可能会出现中文显示不正确的问题。这个时候不要管它，直接存盘，然后用记事本（Notepad）、Word打开保存的文件就可以了。存盘的文件不会出现乱码。</p>                                  
+
+<p>Q：我需要为使用、转载FtpList付费吗？<br>
+A：FtpList是一个“友情软件”（Friendware），用户在承诺不用于商业目的，也不对文件及其附件进行任何更改的条件下，不需要为使用该软件负任何费用，最多是在动漫讨论区看到我发帖子灌水时，进去捧个人场，作为友情回报，或者在年节时发个email问声好（所以叫“友情软件”）。我承诺绝不在程序中暗藏任何商业广告、木马，但不承诺为使用FtpList的后果承担任何责任。如果您需要将它用于商业目的，或加入您的网站，请<a
+href="mailto:stronghorse@163.net">与我联系</a>，否则保留追究一切责任的权利。</p>                      
+
+<h2><a name="使用说明"><font color="#FF0000">使用说明</font></a></h2>
+
+<p>一、获取FTP文件列表</p>  
+
+<p>在“FTP Server”框中，输入Host（服务器地址）、Port（端口）、User（用户名）、Password（密码）、Remote                             
+path（FTP上的起始目录），确定是否采用PASV方式。如果有防火墙（firewall），再点框中的“Firewall”按钮，在弹出的对话框中对防火墙进行设置。如果需要经常访问此站点，可以点框中的“Save”按钮保存，以后用的时候点“Load”按钮即可再调入。</p>  
+
+<p>“FTP Server”框中内容设置完成后，点外面的“Go”按钮即可开始获取目录信息。获取过程的中间信息会显示在窗口下方的信息框中。数据传输完成后，系统自动对收到的信息进行解释，然后显示出目录的树型结构。</p>                              
+
+<p>如果不幸说明也没列出来，把PASV选项去掉试试。如果不幸目录只列出了一层，那么恭喜，您中奖了：对方服务器不支持LIST              
+-R命令。这时可以将“Use LIST -R command”选项去掉，再点Go，就可以列出下级目录了。这种强迫方式的数据通讯量比用LIST              
+-R命令要大得多，在网络拥堵的时候可能会列不全，因此建议只有在确信服务器不支持LIST              
+-R命令时才用。</p>                
+
+<p>如果希望在输出的树型图中只列出目录结构，而不包含目录中的文件，可以在“Output”框中清除“Show                             
+files”选项，然后点“Tree”按钮。如果希望在树型图中使用英文字符而不是中文字符，可以清除“Use                             
+Chinese character”选项，然后点“Tree”按钮。如果希望树型图中只包含文件名和目录名，不包括长度信息，可以清除“Verbose                
+mode”选项，然后点“Tree”按钮。</p>              
+
+<p>如果希望输出FTP的URL列表，以便粘贴到FlashGet等下载工具中，可以点击“Output”框中的“URL”按钮。如果希望在URL中直接包含用户名和密码，可以在选中“With                             
+user and password”选项后再点“URL”按钮。如果在树图中看到某些目录下面没有列出文件，可以清除“Show    
+files”选项，列出所有目录，然后再对怀疑列不全的目录重新列表。</p>                          
+
+<p>如果希望得到HTML格式的输出，便于从中选择需要的链接，直接用鼠标拖到FlashGet上下载，则可以点击“Output”框中的“HTML”按钮。</p>                          
+
+<p>如果希望将FTP上的文件列表导入数据库或Excel工作表，可以点击“Output”框中的“List”按钮，输出的结果是一个用制表符（\t）分割的文本文件，第一列是目录，第二列是文件名，第三列是文件大小。</p>                          
+
+<p>如果希望保存输出结果，点“Save”按钮，在弹出的对话框中选择目标文件即可。</p>  
+
+<p>二、获取本地目录列表</p>  
+
+<p>点击“Local”按钮，在弹出的对话框中选择需要列出的目录即可。对输出结果的处理同前。</p>  
+
+<h2><a name="附录A 鸣谢"><font color="#FF0000">附录A 鸣谢</font></a></h2>                                                      
+
+<p>本程序的FTP通讯部分参考了<a href="mailto:philip@gd-ind.com">Phil 
+Anderson</a>在<a href="http://www.codeguru.com/">codeguru</a>上发表的<a href="http://www.codeguru.com/internet/ftpclient.shtml">A simple FTP client class</a>。</p>              
+
+<h2><a name="附录B 版本更新记录"><font color="#FF0000">附录B 版本更新记录</font></a></h2>                                                  
+
+<p>Version 1.14<br>
+新增功能：在列表区增加右键菜单，方便需要进行复制操作的用户。</p>                                    
+
+<p>Version 1.13<br> 
+1、新增功能：HTML格式输出。输出结果是一个HTML文件，并且在输出后自动调用IE打开这个文件，需要下载其中的哪个链接直接用鼠标拖到FlashGet即可。适用于需要从站点文件中选择下载的情况。<br>
+2、新增功能：LIST方式输出。这种输出的结果是一个用制表符（\t）分割的文本文件，第一列是目录，第二列是文件名，第三列是文件大小。这种格式的文件适于导入数据库或Excel工作表。</p>                                    
+
+<p>Version 1.12<br>   
+新增功能：在列URL的时候，增加“Show files”选项。这个选项缺省是选中的，如果在树图中看到某些目录下面没有列出文件，可以清除这个选项，列出所有目录，然后再对怀疑列不全的目录重新列表。<br>      
+功能改进：在列目录的过程中，允许中断。<br>
+功能改进：改写了<a href="mailto:philip@gd-ind.com">Phil   
+Anderson</a>在<a href="http://www.codeguru.com/">codeguru</a>上发表的<a href="http://www.codeguru.com/internet/ftpclient.shtml">A simple FTP client class</a>，将基于CSocket、CAsyncSocket的CFTPClient类，改写成基于纯socket函数、无阻塞的类，在此基础上实现了用LIST    
+-R命令时的中断功能。原先用MFC的CFtpConnection类写的不用LIST -R命令列表的代码也被彻底放弃，统一到新类上来。套句IT流行语：“俺终于也掌握‘黑心’技术咧！”<br>   
+功能改进：临时文件不再使用C盘根目录下固定的文件，而是在系统临时目录中创建，这样就取消了一次只能运行一个FtpList的限制。<br>
+功能改进：输出结果大于10MB时，改为直接存盘，不再在信息显示窗口中显示，以免浪费时间和内存。<br>   
+功能改进：以前在滚动窗口中显示收到的所有信息，这些信息也是需要内存来存储的。现在改为只显示收到的最新信息，以减少无谓的内存消耗。<br>
+错误修正：点Local按钮列本地目录，或不用LIST -R列FTP目录的时候，最上层目录的长度总计不正确。</p>                                     
+
+<p>Version 1.10a<br>   
+新增功能：如果“Verbose mode”选项被选中（缺省为选中），在输出目录项的时候，除了输出该目录下的子目录数、文件数、文件长度外，还输出此目录下所有各级子目录中的文件长度之和。这个功能将有助于了解FTP或本地硬盘中占据资源最多的目录，也可用于清点FTP或硬盘中的收藏数量。</p>                               
+
+<p>Version 1.10<br>  
+新增功能：增加“Use LIST -R command”选项。如果此选项被选中（缺省为选中），则FtpList将使用高效、可靠的LIST   
+-R命令获取服务器目录信息。但是LIST -R命令并不是所有服务器都支持的，在不支持的服务器上用LIST   
+-R命令只能返回第一级目录。这时就可以清除这个选项，强制FtpList逐级周游服务器目录，以获取完整目录结构。</p>                            
+
+<p>Version 1.09<br>   
+新增功能：增加“Verbose mode”选项。如果此选项被选中（缺省为选中），则在输出树型图的时候，在目录项后面会附加目录下的子目录数、文件数、文件总长度，在文件后面会附加文件长度。</p>                              
+
+<p>Version 1.08<br>   
+功能修正：目录、文件按照字母顺序排列。</p>                            
+
+<p>Version 1.07<br>      
+新增功能：用户可以选择是否采用PASV方式。<br>
+新增功能：将Go按钮设置为缺省按钮，即按回车键相当于点击Go按钮。<br>
+错误修正：在数据包边界部分，可能会因半个汉字而造成乱码。<br>
+错误修正：如果Remote Path不为空，该子目录下的文件和目录会被重复列出。<br>     
+错误修正：某些包含特定字符的目录列不出来。</p>                            
+
+<p>Version 1.06<br>    
+功能增强：某些FTP服务器在返回目录信息的时候，可能会漏掉目录下的子目录信息，这时FtpList可以根据后面的信息重建目录树。</p>                            
+
+<p>Version 1.05<br>   
+<font COLOR="#000000">anonymous首字母改成小写，与某些FTP服务器兼容。</font>
+</p>    
+
+<p>Version 1.04<br>    
+错误修正：非标准端口号在URL输出时位置不正确。
+</p>    
+
+<p>Version 1.03<br>    
+错误修正：在选择“With user and password”后点URL，输出结果中的协议名称错误，并且不包含非标准端口号。    
+</p>    
+
+<p>Version 1.02<br>     
+1、修正Version 1.01的存盘错误。<br>     
+2、采用中间文件进行过渡，加快显示速度。
+</p>    
+
+<p>Version 1.01<br>     
+重新定义了部分数据结构及算法，减少内存消耗。
+</p>    
+
+<p>Version 1.00<br>    
+能够列出FTP、本地目录的树型图、URL列表。
+</p>    
+
+</body>
+</html>
