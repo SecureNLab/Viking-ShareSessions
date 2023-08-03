@@ -6,3 +6,8 @@ Documentation or supporting materials of Viking team's public sharing sessions
 ### 202307
 #### 反序列化漏洞
 #### 反弹shell
+#### pwn工具介绍
+#### linux二进制文件elf格式
+#### windows下权限提升
+### 202308
+#### Crypto入门
