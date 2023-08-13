@@ -12,3 +12,5 @@ Documentation or supporting materials of Viking team's public sharing sessions
 ### 202308
 #### Crypto入门
 #### 文件上传漏洞基础
+#### Vyper 不可重入锁漏洞技术事后报告
+#### 文件隐写
