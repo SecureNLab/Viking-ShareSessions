@@ -14,3 +14,4 @@ Documentation or supporting materials of Viking team's public sharing sessions
 #### 文件上传漏洞基础
 #### Vyper 不可重入锁漏洞技术事后报告
 #### 文件隐写
+#### xss漏洞原理基础与实战
