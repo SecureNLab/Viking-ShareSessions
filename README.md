@@ -15,3 +15,4 @@ Documentation or supporting materials of Viking team's public sharing sessions
 #### Vyper 不可重入锁漏洞技术事后报告
 #### 文件隐写
 #### xss漏洞原理基础与实战
+#### 二进制程序保护机制与栈溢出漏洞基础
