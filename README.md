@@ -16,3 +16,4 @@ Documentation or supporting materials of Viking team's public sharing sessions
 #### 文件隐写
 #### xss漏洞原理基础与实战
 #### 二进制程序保护机制与栈溢出漏洞基础
+#### CSRF漏洞原理与实战
